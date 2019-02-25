@@ -26,3 +26,7 @@ My master made me like this as an internship application project. I wish best of
 
 Sincerely,
 FuzzyBear.
+
+## --WARNING--
+If you try and chat with this bot, he might respond, but in ways you would be surprised. Please don't take it to heart when he insults you.
+
