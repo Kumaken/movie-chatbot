@@ -17,18 +17,26 @@ server.use(bodyParser.json());
 // Route untuk POST request:
 server.post('/get-movie-details', (req, res) => {
     // Akan diparse nama movie dari request body:
-    const targetTitle = req.body.result && req.body.result.parameters && req.body.result.parameters.movie ? req.body.result.parameters.movie : 'The Godfather';
+    const targetTitle = req.body.result && req.body.result.parameters && req.body.result.parameters.movie ? req.body.result.parameters.movie : '';
+    // Request Url dari OMDb API
     const reqUrl = encodeURI(`http://www.omdbapi.com/?t=${targetTitle}&apikey=${API_KEY}`);
     http.get(reqUrl, (responseFromAPI) => {
-        let fullResponse = '';
+        let fullResponse = ''; // Diisi hasil query dari OMDb.
         responseFromAPI.on('data', (chunk) => {
             fullResponse += chunk;
         });
         responseFromAPI.on('end', () => {
             const movie = JSON.parse(fullResponse);
-            let moviedetails = targetTitle === 'Dora The Explorer' ? `!!!Movie Not Found. Searching your secret favourite movie instead.!!!\n\n\n` : '';
-            moviedetails += `${movie.Title}\n\nRatings: ${movie.Rated}\nIMDB Rating: ${movie.imdbRating}\nBox Office: ${movie.BoxOffice}\nRelease Date: ${movie.Released}\n\nStarring: ${movie.Actors}\n\nType: ${movie.Type}\nGenres: ${movie.Genre}\nRuntime: ${movie.Runtime}\n\nDirector: ${movie.Director}\nWriter: ${movie.Writer}\n\nLanguages Available: ${movie.Language}\nCountry : ${movie.Country}\n\nSynopsis: ${movie.Plot}\n\nAwards won: ${movie.Awards}\nPoster: \n${movie.Poster}` ;
+            let moviedetails = '';
+            // Jika tidak diterima parameter query apa-apa a.k.a. gagal intent dari bot dialogflow
+            if (targetTitle == '')
+                // Beri warning!
+                moviedetails +=`WARNING: Movie Not Found. Use proper capitalizations and DON'T TYPO YOU HOOMAN!!!`;
+            else
+                // Else: isi dengan data dari movie yang telah di-search.
+                moviedetails += `${movie.Title}\n\nRatings: ${movie.Rated}\nIMDB Rating: ${movie.imdbRating}\nBox Office: ${movie.BoxOffice}\nRelease Date: ${movie.Released}\n\nStarring: ${movie.Actors}\n\nType: ${movie.Type}\nGenres: ${movie.Genre}\nRuntime: ${movie.Runtime}\n\nDirector: ${movie.Director}\nWriter: ${movie.Writer}\n\nLanguages Available: ${movie.Language}\nCountry : ${movie.Country}\n\nSynopsis: ${movie.Plot}\n\nAwards won: ${movie.Awards}\nPoster: \n${movie.Poster}` ;
 
+            //Return ke agent dialogflow
             return res.json({
                 speech: moviedetails,
                 displayText: moviedetails,
@@ -44,6 +52,7 @@ server.post('/get-movie-details', (req, res) => {
     });
 });
 
+// Untuk testing di localhost port 8000
 server.listen((process.env.PORT || 8000), () => {
     console.log("Server berjalan dengan lancar");
 });
