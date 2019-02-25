@@ -15,6 +15,7 @@ EX: Tell me about Doraemon, Give me info on Avengers, I wanna know about Star Wa
 ## --TOOLS--
 DialogFlow - A Google-owned developer of human–computer interaction technologies based on natural language conversations
 OMDB API - API to fetch details about movies from IMDb
+Heroku - deploy webhook for dialogflow to use
 Some node.js with express server
 
 ## --HOW TO ABUSE THIS SLAVE--
