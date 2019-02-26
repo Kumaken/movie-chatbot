@@ -13,7 +13,7 @@ However, you can also put in your request using informal casual phrases in Engli
 EX: Tell me about Doraemon, Give me info on Avengers, I wanna know about Star Wars.
 
 ALSO: Moviebot can give you some random movie suggestion based on genres! Simply do:
-EX: rec GNRhorror, recommend GNRwestern, recommend me GNRromance
+rec GNRhorror, recommend GNRwestern, recommend me GNRromance (GNR stands for Genre and identification for bot to send you recommendations)
 
 ## --TOOLS--
 - DialogFlow - A Google-owned developer of human–computer interaction technologies based on natural language conversations
