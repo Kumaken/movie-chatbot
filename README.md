@@ -12,6 +12,9 @@ EX: search "Spirited Away", search "Good Will Hunting".
 However, you can also put in your request using informal casual phrases in English though. Just be wary, sometimes it won't work this way.
 EX: Tell me about Doraemon, Give me info on Avengers, I wanna know about Star Wars.
 
+ALSO: Moviebot can give you some random movie suggestion based on genres! Simply do:
+EX: rec "GNRhorror", recommend "GNRwestern", recommend me "GNRromance"
+
 ## --TOOLS--
 - DialogFlow - A Google-owned developer of human–computer interaction technologies based on natural language conversations
 - OMDB API - API to fetch details about movies from IMDb
