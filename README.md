@@ -17,7 +17,8 @@ EX: rec GNRhorror, recommend GNRwestern, recommend me GNRromance
 
 ## --TOOLS--
 - DialogFlow - A Google-owned developer of human–computer interaction technologies based on natural language conversations
-- OMDB API - API to fetch details about movies from IMDb
+- OMDb API - API to get details of movies from IMDb
+- TMDb API - API to match genres and get recommendations
 - Heroku - deploy webhook for dialogflow to use
 - Some node.js with express server
 
